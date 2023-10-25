@@ -57,4 +57,7 @@ class FloatingLabelTextFieldNotifier: ObservableObject {
     
     //MARK: Animation Style Properties
     @Published var isAnimateOnFocus: Bool = false
+    
+    //MARK: Bottom Line Properties
+    @Published var displayBottomLine: Bool = true
 }

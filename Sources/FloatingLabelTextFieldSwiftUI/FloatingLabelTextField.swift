@@ -217,13 +217,15 @@ public struct FloatingLabelTextField: View {
             }
 
             //MARK: Line View
-            if textFieldValue.isEmpty || !notifier.isShowError {
-                bottomLine
-                    .background((self.isSelected ? notifier.selectedLineColor : notifier.lineColor))
-
-            } else {
-                bottomLine
-                    .background((self.currentError.condition) ? (self.isSelected ? notifier.selectedLineColor : notifier.lineColor) : notifier.errorColor)
+            if self.notifier.displayBottomLine {
+                if textFieldValue.isEmpty || !notifier.isShowError {
+                    bottomLine
+                        .background((self.isSelected ? notifier.selectedLineColor : notifier.lineColor))
+                    
+                } else {
+                    bottomLine
+                        .background((self.currentError.condition) ? (self.isSelected ? notifier.selectedLineColor : notifier.lineColor) : notifier.errorColor)
+                }
             }
 
         }
@@ -315,6 +317,12 @@ extension FloatingLabelTextField {
     /// Sets the selected line color.
     public func selectedLineColor(_ color: Color) -> Self {
         notifier.selectedLineColor = color
+        return self
+    }
+    
+    /// Whether this view displays bottom line.
+    public func displayBottomLine(_ displayBottomLine: Bool) -> Self {
+        notifier.displayBottomLine = displayBottomLine
         return self
     }
 }
